@@ -24,7 +24,7 @@ public class ScanActivity extends Activity implements IScanner, ComponentCallbac
     }
 
     private void init() {
-        String file = getApplicationContext().getExternalCacheDir().getPath() + getIntent().getIntExtra("file_name", "")
+        String file = getApplicationContext().getExternalCacheDir().getPath() + getIntent().getIntExtra("file_name", "");
         Uri uri = Uri.parse("String file location");
         postImagePick(getBitmap(uri));
     }
