@@ -8,6 +8,8 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.content.res.AssetFileDescriptor;
+import android.graphics.BitmapFactory;
 
 import java.io.IOException;
 
@@ -32,14 +34,14 @@ public class ScanActivity extends Activity implements IScanner, ComponentCallbac
     private Bitmap getBitmap(Uri selectedimg) throws IOException {
         BitmapFactory.Options options = new BitmapFactory.Options();
         try {
-            int quality = getArguments().getInt("quality", 1);
+            int quality = getIntent().getIntExtra("quality", 1);
             options.inSampleSize = quality;
         } catch (Exception e) {
             options.inSampleSize = 1;
         }
         AssetFileDescriptor fileDescriptor = null;
         fileDescriptor =
-                getActivity().getContentResolver().openAssetFileDescriptor(selectedimg, "r");
+                getContentResolver().openAssetFileDescriptor(selectedimg, "r");
         Bitmap original
                 = BitmapFactory.decodeFileDescriptor(
                 fileDescriptor.getFileDescriptor(), null, options);
@@ -47,7 +49,7 @@ public class ScanActivity extends Activity implements IScanner, ComponentCallbac
     }
 
     protected void postImagePick(Bitmap bitmap) {
-        Uri uri = Utils.getUri(getActivity(), bitmap);
+        Uri uri = Utils.getUri(ScanActivity.this, bitmap);
         bitmap.recycle();
         onBitmapSelect(uri);
     }
