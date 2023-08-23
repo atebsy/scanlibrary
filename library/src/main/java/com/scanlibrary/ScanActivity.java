@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.BitmapFactory;
+import java.io.File;
 
 import java.io.IOException;
 
