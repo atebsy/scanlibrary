@@ -43,6 +43,7 @@ public class ResultFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.result_layout, null);
         init();
+        MagicColorButton.performClick();
         return view;
     }
 
