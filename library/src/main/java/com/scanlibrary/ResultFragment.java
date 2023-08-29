@@ -105,8 +105,12 @@ public class ResultFragment extends Fragment {
                         if (bitmap == null) {
                             bitmap = original;
                         }
-                        Uri uri = Utils.getUri(getActivity(), bitmap);
-                        data.putExtra(ScanConstants.SCANNED_RESULT, uri);
+                        final File directory = getActivity().getApplicationContext().getExternalFilesDir("uploads");
+                        final File myImageFile = new File(directory, Calendar.getInstance().getTimeInMillis() + ".jpg"); // Create image file
+                        FileOutputStream fos = new FileOutputStream(myImageFile);
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+                      //  Uri uri = Utils.getUri(getActivity(), bitmap);
+                        data.putExtra(ScanConstants.SCANNED_RESULT, myImageFile.getPath());
                         getActivity().setResult(Activity.RESULT_OK, data);
                         original.recycle();
                         System.gc();
