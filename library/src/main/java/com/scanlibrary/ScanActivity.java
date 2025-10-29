@@ -11,6 +11,7 @@ import android.util.Log;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.BitmapFactory;
 import java.io.File;
+import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -33,6 +34,7 @@ public class ScanActivity extends Activity implements IScanner, ComponentCallbac
             postImagePick(getBitmap(uri));
         } catch (Exception e) {
             e.printStackTrace();
+            Toast.makeText(ScanActivity.this,e.getMessage(),Toast.LENGTH_LONG).show();
         }
     }
 
