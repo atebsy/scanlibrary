@@ -7,5 +7,5 @@ include sdk/native/jni/OpenCV.mk
 LOCAL_MODULE    := Scanner
 LOCAL_SRC_FILES := scan.cpp
 LOCAL_LDLIBS    += -lm -llog -landroid
-LOCAL_LDFLAGS += -ljnigraphics
+LOCAL_LDFLAGS   += "-ljnigraphics,-Wl,-z,max-page-size=16384"
 include $(BUILD_SHARED_LIBRARY)
