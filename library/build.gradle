@@ -16,11 +16,15 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+        externalNativeBuild {
+            cmake {
+                abiFilters "armeabi-v7a", "arm64-v8a", "x86", "mips64", "armeabi", "mips"
+            }
+        }
         ndk
                 {
                     moduleName "Scanner"
-                    //noinspection ChromeOsAbiSupport
-                    abiFilters 'armeabi-v7a','armeabi','arm64-v8a','x86','mips','mips64'
+                     abiFilters "armeabi-v7a", "arm64-v8a", "x86", "mips64", "armeabi", "mips"
                 }
     }
     sourceSets.main
